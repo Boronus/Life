@@ -1,0 +1,21 @@
+body {
+    text-align: center;
+}
+
+#life_screen {
+    width:400px;
+    height:400px;
+    border: darkblue solid 3px;
+}
+
+.buttons-container {
+    width: 100%;
+}
+
+#start_button {
+    magrin: 10px auto;
+}
+
+#start_button2 {
+    magrin: 10px auto;
+}
