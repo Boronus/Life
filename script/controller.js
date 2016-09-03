@@ -11,7 +11,7 @@ var Controller = function (view, model) {
     });
     
     $('body').bind('updateView', function(e) {
-        _view.updateView();
+        _view.updateView(e.table);
     });
 
     return  {
