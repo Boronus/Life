@@ -1,21 +1,39 @@
 /**
- * Created by Дима on 28.08.2016.
+ * Created by Дима on 04.09.2016.
  */
 var Model = function () {
 
-    var table = new Array(20);
-    for(var i = 0; i < table.length; i++)
-        table[i] = new Array(10);
-    
-    var notifyController = function () {
-        $('body').trigger('updateView');
-    }
+    //function getRandomInt(max)
+    //{
+    //    return Math.floor(Math.random() * (max + 1));
+    //}
 
+    var i=0,j=0;
+    var n = 20, m = 20;
+    var tableB = [];
+    
+    for (i = 0; i < m; i++){
+        tableB[i] = [];
+        for (j = 0; j < n; j++){
+            tableB[i][j] = 0;
+        }}
+    //tableB[getRandomInt(20)][getRandomInt(20)]=1;
+    
     return  {
-        change_color:function (color) {
-            //$('#life_screen').css("background-color", color);
-            console.log("mas");
-            notifyController();
+        start:function () {
+            $('body').trigger('updateCanvas');
+        },
+        point:function (x,y) {
+            var nx = Math.floor(x/20);
+            var ny = Math.floor(y/20);
+            if (tableB[nx][ny]===0)
+                tableB[nx][ny] = 1;
+            else
+                tableB[nx][ny] = 0;
+            $('body').trigger('updateCanvas');
+        },
+        getTable: function(){
+            return tableB;
         }
     };
 };

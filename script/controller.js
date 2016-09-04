@@ -1,19 +1,23 @@
 /**
- * Created by Дима on 28.08.2016.
+ * Created by Дима on 04.09.2016.
  */
 var Controller = function (view, model) {
 
     var _view = view;
     var _model = model;
 
-    $('body').bind('change_color', function(e) {
-        _model.change_color(e.color);
-    });
-    
-    $('body').bind('updateView', function(e) {
-        _view.updateView(e.table);
+    $('body').bind('start', function(e) {
+        _model.start(e);
     });
 
+    $('body').bind('point', function(e) {
+        _model.point(e.x,e.y);
+    });
+
+    $('body').bind('updateCanvas', function(e) {
+        _view.updateCanvas(_model.getTable());
+    });
+    
     return  {
 
     };
