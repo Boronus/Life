@@ -14,6 +14,10 @@ var Controller = function (view, model) {
         _model.stop(e);
     });
 
+    $('body').bind('clear', function(e) {
+        _model.clear(e);
+    });
+
     $('body').bind('point', function(e) {
         _model.point(e.x,e.y);
     });

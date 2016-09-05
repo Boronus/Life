@@ -12,10 +12,6 @@ body {
     width: 100%;
 }
 
-#start_button {
-    magrin: 10px auto;
-}
-
-#start_button2 {
+.button {
     magrin: 10px auto;
 }

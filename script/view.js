@@ -28,6 +28,10 @@ var View = function () {
             var event = jQuery.Event("stop");
             $('body').trigger(event);
         });
+        $("#clear_button").on("click", function(){
+            var event = jQuery.Event("clear");
+            $('body').trigger(event);
+        });
         $("#life_screen").on("click", function(e){
             var event = jQuery.Event("point");
             var pos = $(this).offset();

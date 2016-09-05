@@ -44,6 +44,7 @@ var Model = function () {
         if (tableB[i][j]===1 && (col===2 || col===3))
             res = 1;
         return res;
+        
     }
 
     var step = function () {
@@ -69,6 +70,15 @@ var Model = function () {
         tableB = step();
         $('body').trigger('updateCanvas');
     }
+    
+    var newTable = function () {
+        for (i = 0; i < n; i++){
+            for (j = 0; j < n; j++){
+                tableB[i][j] = 0;
+            }
+        }
+        $('body').trigger('updateCanvas');
+    }
 
     return  {
         start:function () {
@@ -82,6 +92,9 @@ var Model = function () {
         stop:function () {
             clearInterval(timer);
             isRunning=false;
+        },
+        clear:function () {
+            newTable();
         },
         point:function (x,y) {
             var nx = Math.floor(x/20);
