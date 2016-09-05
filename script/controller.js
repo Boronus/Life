@@ -10,6 +10,10 @@ var Controller = function (view, model) {
         _model.start(e);
     });
 
+    $('body').bind('stop', function(e) {
+        _model.stop(e);
+    });
+
     $('body').bind('point', function(e) {
         _model.point(e.x,e.y);
     });

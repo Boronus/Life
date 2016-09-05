@@ -2,28 +2,15 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Life Game</title>
     <link href="main.css" rel="stylesheet">
-
-    <!-- подключаем тесты -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/mocha/2.1.0/mocha.css">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/mocha/2.1.0/mocha.js"></script>
-    <script>
-        mocha.setup('bdd');
-    </script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/chai/2.0.0/chai.js"></script>
-    <script>
-        var assert = chai.assert;
-    </script>
-    <!-- Конец подключения тестов -->
-
 </head>
 <body>
 
     <canvas id="life_screen" width="400" height="400"></canvas>
     <div class="buttons-container">
         <input type="button" value="Начать" id="start_button" />
-        <input type="button" value="Пауза" id="pause_button" />
+        <input type="button" value="Пауза" id="stop_button" />
     </div>
 
     <script src="script/jquery-1.7.1.min.js"></script>
@@ -31,25 +18,5 @@
     <script src="script/controller.js"></script>
     <script src="script/model.js"></script>
     <script src="script/application.js"></script>
-
-    <!-- подключаем тесты -->
-    <script>
-        function pow(x, n) {
-            var result = 1;
-
-            for (var i = 0; i < n; i++) {
-                result *= x;
-            }
-
-            return result;
-        }
-    </script>
-    <script src="script/test.js"></script>
-    <div id="mocha"></div>
-    <script>
-        mocha.run();
-    </script>
-    <!-- Конец подключения тестов -->
-
 </body>
 </html>
