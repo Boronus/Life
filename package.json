@@ -1,0 +1,11 @@
+{
+  "name": "Life",
+  "version": "0.3",
+  "description": "Test project",
+  "main": "bundle.js",
+  "scripts": {
+    "build": "webpack-dev-server",
+    "test": "karma start karma.conf.js"
+  },
+  "author": "Dmitrii Boronin"
+}

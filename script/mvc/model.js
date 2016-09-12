@@ -78,6 +78,12 @@ export default function() {
     }
 
     return  {
+        checkPoint:function(i,j) {
+            return checkPoint(i,j);
+        },
+        putTable: function(table){
+            tableB = table;
+        },
         start:function () {
             if (isRunning===false) {
                 timer = setInterval(function () {

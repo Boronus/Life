@@ -8,7 +8,7 @@ module.exports = {
         library:"script"
     },
 
-    plugins: [
+    /*plugins: [
         new webpack.optimize.UglifyJsPlugin({
             compress: {
                 warnings:false,
@@ -16,7 +16,7 @@ module.exports = {
                 unsafe:true
             }
         })
-    ],
+    ],*/
     module: {
         loaders: [           
             {
