@@ -1,8 +1,5 @@
-/**
- * Created by Дима on 04.09.2016.
- */
-var Controller = function (view, model) {
-
+export default function (model, view) {
+        
     var _view = view;
     var _model = model;
 

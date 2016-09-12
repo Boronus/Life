@@ -1,7 +1,4 @@
-/**
- * Created by Дима on 04.09.2016.
- */
-var View = function () {
+export default function () {
 
     var updateCanvas = function (table) {
         var ds = $("#life_screen").get(0).getContext("2d");

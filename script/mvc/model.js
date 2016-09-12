@@ -1,7 +1,4 @@
-/**
- * Created by Дима on 04.09.2016.
- */
-var Model = function () {
+export default function() {
 
     var i=0,j=0;
     var n = 20;
