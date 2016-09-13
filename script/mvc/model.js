@@ -13,7 +13,7 @@ export default function() {
     }
 
     var checkPoint = function (i,j) {
-        var ip,jp,ipc,jpc,n=20;
+        var ip,jp,ipc,jpc;
         var col =0;
         for (ip = i-1; ip <= i+1; ip++) {
             for (jp = j-1; jp <= j+1; jp++) {
@@ -46,7 +46,6 @@ export default function() {
 
     var step = function () {
         var tableN = [];
-        var n=20;
         var i,j;
         for (i = 0; i < n; i++){
             tableN[i] = [];
@@ -81,8 +80,13 @@ export default function() {
         checkPoint:function(i,j) {
             return checkPoint(i,j);
         },
-        putTable: function(table){
+        stepControl:function() {
+            tableB = step();
+            return tableB;
+        },
+        putTable: function(table,nt){
             tableB = table;
+            n=nt;
         },
         start:function () {
             if (isRunning===false) {
