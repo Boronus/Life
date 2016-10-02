@@ -1,29 +1,28 @@
-export default function (model, view) {
-        
-    var _view = view;
-    var _model = model;
+export default class Controller {
 
-    $('body').bind('start', function(e) {
-        _model.start(e);
-    });
+    constructor(model, view) {
+        this.model = model;
+        this.view = view;
 
-    $('body').bind('stop', function(e) {
-        _model.stop(e);
-    });
+        $body = $('body');
+        $body.bind('start', function (e) {
+            this.model.start(e);
+        });
 
-    $('body').bind('clear', function(e) {
-        _model.clear(e);
-    });
+        $body.bind('stop', function (e) {
+            this.model.stop(e);
+        });
 
-    $('body').bind('point', function(e) {
-        _model.point(e.x,e.y);
-    });
+        $body.bind('clear', function (e) {
+            this.model.clear(e);
+        });
 
-    $('body').bind('updateCanvas', function(e) {
-        _view.updateCanvas(_model.getTable());
-    });
-    
-    return  {
+        $body.bind('point', function (e) {
+            this.model.point(e.x, e.y);
+        });
 
-    };
+        $body.bind('updateCanvas', function (e) {
+            this.view.updateCanvas(this.model.getTable());
+        });
+    }
 };

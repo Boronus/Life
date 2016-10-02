@@ -1,41 +1,41 @@
 import Model from "./script/mvc/model.js";
+import View from "./script/mvc/view.js";
+import Controller from "./script/mvc/controller.js";
 
 var assert = require('assert');
 
 describe("Checking point", function() {
     it("Проверяет, какое значение должна принять точка в зависимости от количества соседей", function() {
-        var model = Model();
-        var tableT = [
+        let model = new Model(5);
+        model.tableB = [
             [0, 0, 0, 0, 0],
             [0, 1, 0, 0, 0],
             [0, 0, 1, 0, 0],
             [0, 0, 1, 0, 0],
             [1, 1, 1, 0, 0]
         ];
-        model.putTable(tableT,5);
-        assert.equal(model.checkPoint(0,0), 1,"point 0,0 +");
-        assert.equal(model.checkPoint(2,2), 1,"point 2,2 +");
-        assert.equal(model.checkPoint(0,4), 0,"point 0,4 -");
-        assert.equal(model.checkPoint(1,3), 0,"point 1,3 -");
-        assert.equal(model.checkPoint(4,4), 0,"point 4,4 -");
-        assert.equal(model.checkPoint(4,2), 1,"point 4,2 +");
+        assert.equal(model._checkPoint(0,0), 1,"point 0,0 +");
+        assert.equal(model._checkPoint(2,2), 1,"point 2,2 +");
+        assert.equal(model._checkPoint(0,4), 0,"point 0,4 -");
+        assert.equal(model._checkPoint(1,3), 0,"point 1,3 -");
+        assert.equal(model._checkPoint(4,4), 0,"point 4,4 -");
+        assert.equal(model._checkPoint(4,2), 1,"point 4,2 +");
 
     });
 });
 
 describe("Checking planer", function() {
     it("Проверяет, как изменится форма планера на следующем шаге", function() {
-        var model = Model();
-        var tableT = [
+        let model = new Model(5);
+        model.tableB = [
             [0, 1, 0, 0, 0],
             [0, 0, 1, 0, 0],
             [1, 1, 1, 0, 0],
             [0, 0, 0, 0, 0],
             [0, 0, 0, 0, 0]
         ];
-        model.putTable(tableT,5);
-        model.stepControl();
-        tableT = [
+        model._changeArray();
+        let tableT = [
             [0, 0, 0, 0, 0],
             [1, 0, 1, 0, 0],
             [0, 1, 1, 0, 0],
@@ -43,7 +43,7 @@ describe("Checking planer", function() {
             [0, 0, 0, 0, 0]
         ];
         assert.deepEqual(model.getTable(), tableT,"First step");
-        model.stepControl();
+        model._changeArray();
         tableT = [
             [0, 0, 0, 0, 0],
             [0, 0, 1, 0, 0],
@@ -52,7 +52,7 @@ describe("Checking planer", function() {
             [0, 0, 0, 0, 0]
         ];
         assert.deepEqual(model.getTable(), tableT,"Second step");
-        model.stepControl();
+        model._changeArray();
         tableT = [
             [0, 0, 0, 0, 0],
             [0, 1, 0, 0, 0],
@@ -61,7 +61,7 @@ describe("Checking planer", function() {
             [0, 0, 0, 0, 0]
         ];
         assert.deepEqual(model.getTable(), tableT,"Third step");
-        model.stepControl();
+        model._changeArray();
         tableT = [
             [0, 0, 0, 0, 0],
             [0, 0, 1, 0, 0],
@@ -76,7 +76,7 @@ describe("Checking planer", function() {
 
 describe("Checking static", function() {
     it("Проверяет, изменится ли статичный объект на следующем шаге", function() {
-        var model = Model();
+        var model = new Model(5);
         var tableT = [
             [0, 1, 0, 0, 0],
             [1, 0, 1, 0, 0],
@@ -84,8 +84,7 @@ describe("Checking static", function() {
             [0, 1, 0, 0, 0],
             [0, 0, 0, 0, 0]
         ];
-        model.putTable(tableT,5);
-        model.stepControl();
+        model.tableB = tableT;
         assert.deepEqual(model.getTable(), tableT,"First object");
         tableT = [
             [0, 0, 0, 0, 0],
@@ -94,8 +93,7 @@ describe("Checking static", function() {
             [0, 0, 1, 0, 0],
             [0, 0, 0, 0, 0]
         ];
-        model.putTable(tableT,5);
-        model.stepControl();
+        model.tableB = tableT;
         assert.deepEqual(model.getTable(), tableT,"Second object");
         tableT = [
             [0, 1, 0, 0, 0],
@@ -104,16 +102,14 @@ describe("Checking static", function() {
             [0, 0, 1, 0, 0],
             [0, 0, 0, 0, 0]
         ];
-        model.putTable(tableT,5);
-        model.stepControl();
+        model.tableB = tableT;
         assert.deepEqual(model.getTable(), tableT,"Third object");
-
     });
 });
 
 describe("Checking periodic", function() {
     it("Проверяет, будет ли правильно функционировать осцилятор", function() {
-        var model = Model();
+        var model = new Model(5);
         var tableT1 = [
             [0, 0, 0, 0, 0],
             [0, 0, 1, 0, 0],
@@ -128,12 +124,12 @@ describe("Checking periodic", function() {
             [0, 0, 0, 0, 0],
             [0, 0, 0, 0, 0]
         ];
-        model.putTable(tableT1,5);
+        model.tableB = tableT1;
         for (let i=0;i<5;i++)
         {
-            model.stepControl();
+            model._changeArray();
             assert.deepEqual(model.getTable(), tableT2, "Odd step");
-            model.stepControl();
+            model._changeArray();
             assert.deepEqual(model.getTable(), tableT1, "Even step");
         }
     });
