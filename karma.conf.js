@@ -8,6 +8,7 @@ module.exports = function (config) {
 
         files: [
             'script/jquery-1.7.1.min.js',
+            'script/canteen.min.js',
             'test.js'
         ],
 

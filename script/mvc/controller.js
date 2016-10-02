@@ -1,28 +1,34 @@
+import Model from "./model.js";
+import View from "./view.js";
+
 export default class Controller {
 
-    constructor(model, view) {
-        this.model = model;
-        this.view = view;
+    constructor() {
+        this._model = new Model (20);
+        this._view = new View ();        
+        this._view.initCanvas();
+        this.funcInit(this);
+    }
 
-        $body = $('body');
-        $body.bind('start', function (e) {
-            this.model.start(e);
+    funcInit(that) {
+        $('body').bind('start', function (e) {
+            that._model.start(e);
         });
 
-        $body.bind('stop', function (e) {
-            this.model.stop(e);
+        $('body').bind('stop', function (e) {
+            that._model.stop(e);
         });
 
-        $body.bind('clear', function (e) {
-            this.model.clear(e);
+        $('body').bind('clear', function (e) {
+            that._model.clear(e);
         });
 
-        $body.bind('point', function (e) {
-            this.model.point(e.x, e.y);
+        $('body').bind('point', function (e) {
+            that._model.point(e.x, e.y);
         });
 
-        $body.bind('updateCanvas', function (e) {
-            this.view.updateCanvas(this.model.getTable());
+        $('body').bind('updateCanvas', function (e) {
+            that._view.updateCanvas(that._model.tableB);
         });
     }
 };

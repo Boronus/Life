@@ -75,16 +75,17 @@ export default class Model {
     }
 
     start() {
+        var that = this;
         if (this.isRunning === false) {
             this.timer = setInterval(function () {
-                this._changeArray();
+                that._changeArray();
             }, 100);
             this.isRunning = true;
         }
     }
 
     stop() {
-        clearInterval(timer);
+        clearInterval(this.timer);
         this.isRunning = false;
     }
 

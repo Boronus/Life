@@ -134,3 +134,42 @@ describe("Checking periodic", function() {
         }
     });
 });
+describe("Wiew constructor", function() {
+    it("Проверяет отрисовку линий на старте", function() {
+        var canvas = $('<canvas id="life_screen" width="400" height="400"></canvas>');
+        var context = canvas.get(0).getContext('2d');
+        let view = new View();
+        view.drawRectsInit(context);
+
+        var canvas2 = $('<canvas id="life_screen" width="400" height="400"></canvas>');
+        var context2 = canvas2.get(0).getContext('2d');
+        for (let i=0;i<20;i++) {
+            for (let j=0;j<20;j++) {
+                context2.strokeRect(i*20, j*20, 20, 20);
+            }
+        }
+
+        assert.equal(context.hash(),context2.hash());
+    });
+    it("Проверяет перерисовку клеток", function() {
+        var canvas = $('<canvas id="life_screen" width="400" height="400"></canvas>');
+        var context = canvas.get(0).getContext('2d');
+        let view = new View();
+        let model = new Model();
+        model.tableB[5][8]=1;
+        view.drawRects(model.tableB,context);
+
+        var canvas2 = $('<canvas id="life_screen" width="400" height="400"></canvas>');
+        var context2 = canvas2.get(0).getContext('2d');
+        context2.clearRect(0, 0, 400, 400);
+        for (let i=0;i<20;i++) {
+            for (let j=0;j<20;j++) {
+                if ((i===5) && (j===8))
+                    context2.fillRect(i*20, j*20, 20, 20);
+                else
+                    context2.strokeRect(i*20, j*20, 20, 20);
+            }
+        }
+        assert.equal(context.hash(),context2.hash());
+    });
+});
