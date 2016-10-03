@@ -4,7 +4,7 @@ module.exports = function (config) {
 
         basePath: '',
 
-        frameworks: ['mocha', 'chai'],
+        frameworks: ['mocha', 'chai', 'jquery-1.8.3'],
 
         files: [
             'script/jquery-1.7.1.min.js',
@@ -36,7 +36,8 @@ module.exports = function (config) {
             require('karma-chrome-launcher'),
             require('karma-mocha'),
             require('karma-chai'),
-            require('karma-mocha-reporter')
+            require('karma-mocha-reporter'),
+            require('karma-jquery')
         ],
 
         reporters: ['mocha'],

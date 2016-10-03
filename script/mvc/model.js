@@ -13,6 +13,39 @@ export default class Model {
         }
     }
 
+    start() {
+        var that = this;
+        if (this.isRunning === false) {
+            this.timer = setInterval(function () {
+                that._changeArray();
+            }, 100);
+            this.isRunning = true;
+        }
+    }
+
+    stop() {
+        clearInterval(this.timer);
+        this.isRunning = false;
+    }
+
+    clear() {
+        this._newTable();
+    }
+
+    point(x, y) {
+        let nx = Math.floor(x / 20);
+        let ny = Math.floor(y / 20);
+        if (this.tableB[nx][ny] === 0)
+            this.tableB[nx][ny] = 1;
+        else
+            this.tableB[nx][ny] = 0;
+        $('body').trigger('updateCanvas');
+    }
+
+    getTable () {
+        return this.tableB;
+    }
+    
     _checkPoint(i, j) {
         let col = 0;
         for (let ip = i - 1; ip <= i + 1; ip++) {
@@ -74,36 +107,4 @@ export default class Model {
         $('body').trigger('updateCanvas');
     }
 
-    start() {
-        var that = this;
-        if (this.isRunning === false) {
-            this.timer = setInterval(function () {
-                that._changeArray();
-            }, 100);
-            this.isRunning = true;
-        }
-    }
-
-    stop() {
-        clearInterval(this.timer);
-        this.isRunning = false;
-    }
-
-    clear() {
-        this._newTable();
-    }
-    
-    point(x, y) {
-        let nx = Math.floor(x / 20);
-        let ny = Math.floor(y / 20);
-        if (this.tableB[nx][ny] === 0)
-            this.tableB[nx][ny] = 1;
-        else
-            this.tableB[nx][ny] = 0;
-        $('body').trigger('updateCanvas');
-    }
-    
-    getTable () {
-        return this.tableB;
-    }
 };

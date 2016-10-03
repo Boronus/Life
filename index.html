@@ -4,20 +4,17 @@
     <meta charset="UTF-8">
     <title>Life game</title>
     <link href="main.css" rel="stylesheet">
-
 </head>
 <body>
 
-    <canvas id="life_screen" width="400" height="400"></canvas>
+    <canvas class="js-life_screen life_screen" width="400" height="400"></canvas>
     <div class="buttons-container">
-        <input type="button" value="Начать" id="start_button" />
-        <input type="button" value="Пауза" id="stop_button" />
-        <input type="button" value="Очистить" id="clear_button" />
+        <input type="button" value="Начать" class="js-start_button"/>
+        <input type="button" value="Пауза" class="js-stop_button"/>
+        <input type="button" value="Очистить" class="js-clear_button"/>
     </div>
 
-    <script src="script/canteen.min.js"></script>
     <script src="script/jquery-1.7.1.min.js"></script>
     <script src="bundle.js"></script>
-
 </body>
 </html>

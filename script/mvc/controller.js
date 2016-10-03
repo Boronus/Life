@@ -7,28 +7,26 @@ export default class Controller {
         this._model = new Model (20);
         this._view = new View ();        
         this._view.initCanvas();
-        this.funcInit(this);
-    }
-
-    funcInit(that) {
+        let control = this;
+        
         $('body').bind('start', function (e) {
-            that._model.start(e);
+            control._model.start(e);
         });
 
         $('body').bind('stop', function (e) {
-            that._model.stop(e);
+            control._model.stop(e);
         });
 
         $('body').bind('clear', function (e) {
-            that._model.clear(e);
+            control._model.clear(e);
         });
 
         $('body').bind('point', function (e) {
-            that._model.point(e.x, e.y);
+            control._model.point(e.x, e.y);
         });
 
         $('body').bind('updateCanvas', function (e) {
-            that._view.updateCanvas(that._model.tableB);
+            control._view.updateCanvas(control._model.tableB);
         });
     }
 };

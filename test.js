@@ -1,6 +1,5 @@
 import Model from "./script/mvc/model.js";
 import View from "./script/mvc/view.js";
-import Controller from "./script/mvc/controller.js";
 
 var assert = require('assert');
 
@@ -134,12 +133,12 @@ describe("Checking periodic", function() {
         }
     });
 });
-describe("Wiew constructor", function() {
+describe("View tests", function() {
     it("Проверяет отрисовку линий на старте", function() {
         var canvas = $('<canvas id="life_screen" width="400" height="400"></canvas>');
         var context = canvas.get(0).getContext('2d');
         let view = new View();
-        view.drawRectsInit(context);
+        view._drawRectsInit(context);
 
         var canvas2 = $('<canvas id="life_screen" width="400" height="400"></canvas>');
         var context2 = canvas2.get(0).getContext('2d');
@@ -157,7 +156,7 @@ describe("Wiew constructor", function() {
         let view = new View();
         let model = new Model();
         model.tableB[5][8]=1;
-        view.drawRects(model.tableB,context);
+        view._drawRects(model.tableB,context);
 
         var canvas2 = $('<canvas id="life_screen" width="400" height="400"></canvas>');
         var context2 = canvas2.get(0).getContext('2d');
