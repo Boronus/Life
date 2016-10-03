@@ -1,40 +1,43 @@
 export default class View {
 
     constructor (){
-        $(".js-start_button").on("click", function(){
-            $(".js-life_screen").css("background-color", "lightgreen");
-            let $event = jQuery.Event("start");
+        const $screen = $('.js-life_screen');
+        const $start_button = $('.js-start_button');
+        const $stop_button = $('.js-stop_button');
+        const $clear_button = $('.js-clear_button');
+        $start_button.on('click', function(){
+            $screen.css('background-color', 'lightgreen');
+            const $event = jQuery.Event('start');
             $('body').trigger($event);
         });
-        $(".js-stop_button").on("click", function(){
-            $(".js-life_screen").css("background-color", "lightblue");
-            let $event = jQuery.Event("stop");
+        $stop_button.on('click', function(){
+            $screen.css('background-color', 'lightblue');
+            const $event = jQuery.Event('stop');
             $('body').trigger($event);
         });
-        $(".js-clear_button").on("click", function(){
-            let $event = jQuery.Event("clear");
+        $clear_button.on('click', function(){
+            const $event = jQuery.Event('clear');
             $('body').trigger($event);
         });
-        let $screen =$(".js-life_screen");
-        $screen.on("click", function(e){
-            let $event = jQuery.Event("point");
-            let $pos = $(this).offset();
-            let canvas_left = $pos.left;
-            let canvas_top = $pos.top;
+        $screen.on('click', function(e){
+            const $event = jQuery.Event('point');
+            const $pos = $(this).offset();
+            const canvas_left = $pos.left;
+            const canvas_top = $pos.top;
             $event.x = e.pageX - canvas_left-3;
             $event.y = e.pageY - canvas_top-3;
             $('body').trigger($event);
         });
-        $screen.css("background-color", "lightblue");
+        $screen.css('background-color', 'lightblue');
     }
     
     initCanvas () {
-        var context = $(".js-life_screen").get(0).getContext("2d");
+        const context = $('.js-life_screen').get(0).getContext('2d');
         this._drawRectsInit(context);
     }
 
     updateCanvas (table) {
-        var context = $(".js-life_screen").get(0).getContext("2d");
+        const context = $('.js-life_screen').get(0).getContext('2d');
         this._drawRects(table,context);
     }
     
@@ -58,4 +61,4 @@ export default class View {
         }
     }
 
-};
+}

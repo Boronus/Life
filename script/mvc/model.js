@@ -14,7 +14,7 @@ export default class Model {
     }
 
     start() {
-        var that = this;
+        const that = this;
         if (this.isRunning === false) {
             this.timer = setInterval(function () {
                 that._changeArray();
@@ -48,22 +48,22 @@ export default class Model {
     
     _checkPoint(i, j) {
         let col = 0;
-        for (let ip = i - 1; ip <= i + 1; ip++) {
-            for (let jp = j - 1; jp <= j + 1; jp++) {
-                if (i != ip || j != jp) {
+        for (let line = i - 1; line <= i + 1; line++) {
+            for (let column = j - 1; column <= j + 1; column++) {
+                if (i != line || j != column) {
                     //Зацикливаем процедуру на границе карты
-                    let ipc = ip;
-                    let jpc = jp;
-                    if (ip === -1)
-                        ipc = this.n - 1;
-                    if (jp === -1)
-                        jpc = this.n - 1;
-                    if (ip === this.n)
-                        ipc = 0;
-                    if (jp === this.n)
-                        jpc = 0;
+                    let lineBorderLooped = line;
+                    let columnBorderLooped = column;
+                    if (line === -1)
+                        lineBorderLooped = this.n - 1;
+                    if (column === -1)
+                        columnBorderLooped = this.n - 1;
+                    if (line === this.n)
+                        lineBorderLooped = 0;
+                    if (column === this.n)
+                        columnBorderLooped = 0;
                     //Считаем количество клеток
-                    if (this.tableB[ipc][jpc] == 1)
+                    if (this.tableB[lineBorderLooped][columnBorderLooped] == 1)
                         col++;
                 }
             }
@@ -107,4 +107,4 @@ export default class Model {
         $('body').trigger('updateCanvas');
     }
 
-};
+}

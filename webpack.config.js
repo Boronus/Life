@@ -1,4 +1,5 @@
 const webpack = require('webpack');
+var path = require("path");
 
 module.exports = {
     context: __dirname + '/script',
@@ -17,6 +18,15 @@ module.exports = {
         })
     ],
     module: {
+        preLoaders: [
+            {
+                test: /\.js$/,
+                loaders: ['eslint'],
+                include: [
+                    path.resolve(__dirname),
+                ],
+            }
+        ],
         loaders: [           
             {
                 test: /\.js$/,

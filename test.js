@@ -75,8 +75,8 @@ describe("Checking planer", function() {
 
 describe("Checking static", function() {
     it("Проверяет, изменится ли статичный объект на следующем шаге", function() {
-        var model = new Model(5);
-        var tableT = [
+        let model = new Model(5);
+        let tableT = [
             [0, 1, 0, 0, 0],
             [1, 0, 1, 0, 0],
             [1, 0, 1, 0, 0],
@@ -108,15 +108,15 @@ describe("Checking static", function() {
 
 describe("Checking periodic", function() {
     it("Проверяет, будет ли правильно функционировать осцилятор", function() {
-        var model = new Model(5);
-        var tableT1 = [
+        let model = new Model(5);
+        let tableT1 = [
             [0, 0, 0, 0, 0],
             [0, 0, 1, 0, 0],
             [0, 0, 1, 0, 0],
             [0, 0, 1, 0, 0],
             [0, 0, 0, 0, 0]
         ];
-        var tableT2 = [
+        let tableT2 = [
             [0, 0, 0, 0, 0],
             [0, 0, 0, 0, 0],
             [0, 1, 1, 1, 0],
@@ -135,13 +135,13 @@ describe("Checking periodic", function() {
 });
 describe("View tests", function() {
     it("Проверяет отрисовку линий на старте", function() {
-        var canvas = $('<canvas id="life_screen" width="400" height="400"></canvas>');
-        var context = canvas.get(0).getContext('2d');
+        let canvas = $('<canvas id="life_screen" width="400" height="400"></canvas>');
+        let context = canvas.get(0).getContext('2d');
         let view = new View();
         view._drawRectsInit(context);
 
-        var canvas2 = $('<canvas id="life_screen" width="400" height="400"></canvas>');
-        var context2 = canvas2.get(0).getContext('2d');
+        let canvas2 = $('<canvas id="life_screen" width="400" height="400"></canvas>');
+        let context2 = canvas2.get(0).getContext('2d');
         for (let i=0;i<20;i++) {
             for (let j=0;j<20;j++) {
                 context2.strokeRect(i*20, j*20, 20, 20);
@@ -151,8 +151,8 @@ describe("View tests", function() {
         assert.equal(context.hash(),context2.hash());
     });
     it("Проверяет перерисовку клеток", function() {
-        var canvas = $('<canvas id="life_screen" width="400" height="400"></canvas>');
-        var context = canvas.get(0).getContext('2d');
+        let canvas = $('<canvas id="life_screen" width="400" height="400"></canvas>');
+        let context = canvas.get(0).getContext('2d');
         let view = new View();
         let model = new Model();
         model.tableB[5][8]=1;
